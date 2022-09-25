@@ -19,7 +19,7 @@ class Searchbar extends Component {
       if (this.state.inputValue.trim() === ""){
         return ;
       }
-      console.log(`Poshuk : ${this.state.inputValue}`)
+      //console.log(`Poshuk : ${this.state.inputValue}`)
 
       this.props.onSubmit(this.state.inputValue);
       //this.setState({inputValue : ""}); 

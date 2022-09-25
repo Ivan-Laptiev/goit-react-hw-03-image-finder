@@ -21,4 +21,5 @@ import ImageGalleryItem from "components/ImageGalleryItem/ImageGalleryItem"
 
     ImageGallery.propTypes ={
       photos : PropTypes.array,
+      tags : PropTypes.array
     }
