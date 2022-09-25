@@ -34,7 +34,7 @@ export class App extends Component  {
     
      if(prevName !== nextName || page !==  prevPage){
         console.log('Изменился запрос')
-        this.setState({isLoading: true});
+        this.setState({isLoading: true, visible: false});
 
         const response = await axios.get(`?key=${API_KEY}&q=${nextName}&image_type=photo&orientation=horizontal&page=${page}&per_page=12`);
 const photos = response.data.hits.map(({id, tags, webformatURL, largeImageURL}) => ({
