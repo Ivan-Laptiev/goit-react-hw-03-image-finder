@@ -2,15 +2,12 @@ import { Component } from "react";
 import Searchbar from "components/Searchbar/Searchbar";
 import ImageGallery from "components/ImageGallery/ImageGallery";
 import Modal from "components/Modal/Modal";
-import axios from "axios";
 import Loader from "components/Loader/Loader";
 import Button from "components/Button/Button";
 import css from './App.module.css'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-
-const API_KEY = "27774499-f7de8e2f5f5de826deb07ebe7";
-axios.defaults.baseURL = "https://pixabay.com/api/";
+import searchPhotos from "services/API";
 
 export class App extends Component  {
   
@@ -36,8 +33,8 @@ export class App extends Component  {
         //console.log('Изменился запрос')
         this.setState({isLoading: true});
 
-        const response = await axios.get(`?key=${API_KEY}&q=${nextName}&image_type=photo&orientation=horizontal&page=${page}&per_page=12`);
-const photos = response.data.hits.map(({id, tags, webformatURL, largeImageURL}) => ({
+        const response = await searchPhotos(nextName, page);        
+const photos = response.hits.map(({id, tags, webformatURL, largeImageURL}) => ({
   id, tags, webformatURL, largeImageURL
 })
 );
